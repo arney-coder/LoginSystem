@@ -12,6 +12,7 @@ class User{
     $this->_cookieName = Config::get('remember/cookie_name');
     if(!$user){
       if(Session::exists($this->_sessionName)){
+        $user = Session::get($this->_sessionName); 
         if($this->find($user)){
           $this->_isLoggedIn = true;
 
@@ -98,7 +99,7 @@ class User{
   }
 
   public function logout(){
-    $this->_db->delete('users_session', array('userd_id', '=', $this->data()->id));
+    $this->_db->delete('users_session', array('user_id', '=', $this->data()->id));
     Session::delete($this->_sessionName);
     Cookie::delete($this->_cookieName);
   }

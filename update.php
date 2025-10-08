@@ -8,10 +8,10 @@ if(!$user->isLoggedIn()){
 }
 
 
-if(Input::exists()){
+if(Input::exits()){
   if(Token::check(Input::get('token'))){
     $validate = new Validate();
-    $validaton = $validate->check($_POST, array(
+    $validation = $validate->check($_POST, array(
       'required' => true,
       'min' => 2,
       'max' => 50

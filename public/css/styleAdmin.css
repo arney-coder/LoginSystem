@@ -1,0 +1,91 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header.banner {
+  background: linear-gradient(135deg, #004080, #0073e6);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+header.banner h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+header.banner p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Conteúdo */
+main {
+  padding: 2rem;
+}
+
+/* Títulos */
+h2 {
+  margin-bottom: 1rem;
+  color: #004080;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+thead {
+  background: #0073e6;
+  color: white;
+}
+
+thead th {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+/* Alternar cor das linhas */
+tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* Hover */
+tbody tr:hover {
+  background: #e6f2ff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: #004080;
+  color: white;
+  font-size: 0.9rem;
+}
