@@ -53,7 +53,7 @@ class User{
     }
     return false;
   }
-  public function login($username = null, $password = null, $remember){
+  public function login($username = null, $password = null, $remember = null){
    
     if(!$username && !$password && $this->exists()){
       Session::put($this->_sessionName, $this->data()->id);
@@ -75,7 +75,6 @@ class User{
             }
             Cookie::put($this->_cookieName, $hash, Config::get('remember/cookie_expiry'));
           }
-  
           return true;
         }
       }
@@ -86,14 +85,15 @@ class User{
   public function hasPermission($key){
     $group = $this->_db->get('groups', array('id', '=', $this->data()->group));
     if($group->count()){
-      $permissions = json_decode($group->first()->permissions, true);
+        $permissions = json_decode($group->first()->permissions, true);
 
-      if($permissions[$key] == true){
-        return true;
-      }
+        if(is_array($permissions) && isset($permissions[$key]) && $permissions[$key] === true){
+            return true;
+        }
     }
     return false;
-  }
+}
+
   public function exists(){
     return (!empty($this->_data)) ? true:false;
   }

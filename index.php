@@ -5,10 +5,14 @@ if(Session::exists('home')){
   echo '<p>' . Session::flash('home') . '<p>';
 }
 
+// Redirect::to('home.php');
+
 $user = new User();
 if($user->isLoggedIn()){
+  // Redirect::to('profile.php?user=' . escape($user->data()->username));
  ?>
- <p><Olá <a href="profile.php?user=<?php escape($user->data()->username);?>"><?php echo escape($user->data()->username);?> </a>!</p>
+
+ <p><Olá <a href="profile.php?user=<?php escape($user->data()->username);?>"><?php echo escape($user->data()->username);?> </a>!</p>  
  <ul>
   <li><a href="logout.php">sair</a></li>
   <li><a href="update.php">actualizar</a></li>

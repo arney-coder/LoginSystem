@@ -7,7 +7,7 @@ class Cookie{
   public static function get($name){
     return $_COOKIE[$name];
   }
-  public static function put($name, $value, $expiry){
+  public static function put($name, $value, $expiry): bool{
     if(setcookie($name, $value, time() + $expiry, '/')){
       return true;
     }
