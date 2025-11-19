@@ -39,6 +39,10 @@ class User{
     if(!$this->_db->insert('users', $fields)){
       throw new Exception('Erro ao criar uma conta');
     }
+
+    // if(isset($fields['username'])){
+    //   $this->find($fields['username']);
+    // }
   }  
 
   public function find($user = null){

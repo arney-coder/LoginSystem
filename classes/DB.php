@@ -62,6 +62,14 @@ class DB{
     return $this;
 }
 
+  public function getAll($table){
+    $sql = "SELECT * FROM {$table}";
+    if (!$this->myquery($sql)->error()) {
+        return $this;
+    }
+    return false;
+  }
+
   public function action($action, $table, $where = array()){
     if(count($where) === 3){
       $operators = array('=', '>', '<', '>=', '<=');

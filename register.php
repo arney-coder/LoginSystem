@@ -1,17 +1,15 @@
 <?php
 require_once 'core/init.php';
 
-
 $db = DB::getInstance();
-$countries   = $db->myquery("SELECT * FROM country")->results();
-$provinces   = $db->myquery("SELECT * FROM province")->results();
-$districts   = $db->myquery("SELECT * FROM district")->results();
-$schools     = $db->myquery("SELECT * FROM school")->results();
-$regimes     = $db->myquery("SELECT * FROM regime")->results();
-$groups      = $db->myquery("SELECT * FROM candidate_group")->results();
-$delegations = $db->myquery("SELECT * FROM delegation")->results();
-$courses     = $db->myquery("SELECT * FROM course")->results();
-
+$countries   = $db->getAll("country")->results();
+$provinces   = $db->getAll("province")->results();
+$districts   = $db->getAll("district")->results();
+$schools     = $db->getAll("school")->results();
+$regimes     = $db->getAll("regime")->results();
+$groups      = $db->getAll("candidate_group")->results();
+$delegations = $db->getAll("delegation")->results();
+$courses     = $db->getAll("course")->results();
 
 if (Input::exits() && Token::check(Input::get('token'))) {
 
@@ -55,6 +53,8 @@ if (Input::exits() && Token::check(Input::get('token'))) {
 
     if ($validation->passed()) {
         $user = new User();
+        
+
         $salt = Hash::salt(16);
         try {
             $user->create([
@@ -63,11 +63,16 @@ if (Input::exits() && Token::check(Input::get('token'))) {
                 'salt' => $salt,
                 'name' => Input::get('name'),
                 'joined' => date('Y-m-d H:i:s'),
-                'group' => 2 
+                'group' => 1 
             ]);
+            
+            $user->find(Input::get('username'));
 
-            $db->insert('candidate', [
-                'user_id' => $user->data()->id,
+            $id = $user->data()->id;
+
+            $candidate = new Candidate();
+            $candidate->create( [
+                'user_id' => $id,
                 'first_name' => Input::get('first_name'),
                 'last_name' => Input::get('last_name'),
                 'full_name' => Input::get('full_name'),

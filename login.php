@@ -39,11 +39,12 @@ if(Input::exits()){
 <meta charset="UTF-8">
 <title>Login</title>
 <style>
+    
     body {
         font-family: Arial, sans-serif;
         background: #f4f4f9;
         margin: 0;
-        padding: 20px;
+        /* padding: 20px; */
     }
     form {
         max-width: 400px;
@@ -96,9 +97,51 @@ if(Input::exits()){
         text-align: center;
         margin-top: 10px;
     }
+
+/* ---------------------------------------------------------
+   HEADER INSTITUCIONAL
+--------------------------------------------------------- */
+.up-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: #003f7f;
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    border-bottom: 4px solid #002952;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.up-header img {
+    height: 55px;
+}
+
+.up-header .title-block h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.up-header .title-block p {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-top: 2px;
+}
+
 </style>
 </head>
 <body>
+<header class="up-header">
+        <img src="public/images/logo.png" alt="UP Logo">
+        <div class="title-block">
+            <h1>Universidade Pedagógica de Moçambique</h1>
+            <p>Portal do Candidato</p>
+        </div>
+    </header>
 
 <form action="" method="post">
   <h2>Login</h2>
